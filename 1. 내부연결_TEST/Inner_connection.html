@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <!-- ctrl + shift + / : 자동주석
+		CDN: content delivery network
+ -->
+    <!-- Latest compiled and minified CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+      $(function (){
+
+        $("#btn_show").click(function() {
+          $.ajax({
+            url: "back_ok.html",
+            success: function(ok){
+              $("#div").html(ok);
+            }
+          })
+        })
+
+
+        $("#user_check").click(function() {
+          $.ajax({
+            url: "idCheck.jsp",
+            data: {
+              user:$("#user").val()
+            },
+            success:function(check){
+              $("#div").html(check)
+            },
+            error:function(e){
+              alert(e)
+            }
+          })
+        })
+
+
+
+      });
+    </script>
+  </head>
+  <body>
+    <button id="btn_show">AjaxTest 받아오기</button>
+    <hr />
+    <br />
+    <input id="user" />
+    <button id="user_check">id 중복체크하기</button><br />
+    <hr />
+    <div id="div" style="width: 400px; height: 100px; background: skyblue">
+      이곳에 보여줍니다.
+    </div>
+  </body>
+</html>
